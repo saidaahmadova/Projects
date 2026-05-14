@@ -1,24 +1,40 @@
-print("Welcome to Treasure Island.")
-print("Your mission is to find the treasure.")
-choice1 = input('You\'re at a cross road. Where do you want to go? '
-                'Type "left" or "right"').lower()
+import random
 
-if choice1 == "left":
-    choice2 = input('You\'ve come to a lake. '
-                    'There is an island in the middle of the lake.'
-                    'Type "wait" to wait for a boat. Type "swim" to swim across.').lower()
-    if choice2 == "wait":
-        choice3 = input("You arrived at the island unharmed. "
-              "There is a house with 3 doors. One red, one yellow and one blue. "
-              "Which colour do you choose?").lower()
-        if choice3 == "red":
-            print("It's a room full of fore. Game Over")
-        elif choice3 == "yellow":
-            print("You found the treasure! You win!")
-        elif choice3 == "blue":
-            print("It's a room full of fore. Game Over")
-        else:
-            print("You chose a door that doesn't exist.Game Over")
-    else:
-        print("You fell in to a hole. Game Over.")
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+
+print("Welcome to the password generator!")
+
+q_letters = int(input("How many letters: "))
+q_symbols = int(input("How many symbols: "))
+q_numbers = int(input("How many numbers: "))
+capital = input("Should password start with capital letter? Y or N: ").lower()
+
+password_list = []
+
+for char in range(q_letters):
+    random_letter = random.choice(letters)
+    password_list.append(random_letter)
+
+for char in range(q_symbols):
+    random_symbols = random.choice(symbols)
+    password_list.append(random_symbols)
+
+for char in range(q_numbers):
+    random_numbers = random.choice(numbers)
+    password_list.append(random_numbers)
+
+if capital == "Y":
+    password_list[0] = password_list[0].upper()
+
+random.shuffle(password_list)
+
+password = ""
+
+for char in password_list:
+    password += char
+
+print(f"Your password is: {password}")
 
